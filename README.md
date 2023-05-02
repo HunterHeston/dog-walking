@@ -4,6 +4,10 @@ This is a website for an individual pet sitter. This goal is to give a pet sitte
 
 It will not provide all the features of a third party service, but it will provide the most important ones. And can be used in conjunction with a third party service.
 
+## Deployment
+
+Deployed continuously to [Vercel](https://vercel.com/) on push.
+
 ---
 
 ## Default Next.js Documentation
