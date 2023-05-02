@@ -6,7 +6,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <nav>
-        <ul>
+        <ul className="flex">
           <li>Home</li>
           <li>About</li>
           <li>Services</li>
