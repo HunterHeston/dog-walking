@@ -1,3 +1,13 @@
+# Dog Walking Service Provider
+
+This is a website for an individual pet sitter. This goal is to give a pet sitter a website they can use to book clients and have more control over their business then using a third party service.
+
+It will not provide all the features of a third party service, but it will provide the most important ones. And can be used in conjunction with a third party service.
+
+---
+
+## Default Next.js Documentation
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
