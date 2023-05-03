@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Navigation from "./tailwindui/navigation";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -7,25 +7,7 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <nav>
-        <ul className="flex">
-          <li>
-            <Link href={"/"}>Home</Link>
-          </li>
-          <li>
-            <Link href={"/about"}>About</Link>
-          </li>
-          <li>
-            <Link href={"/services"}>Services</Link>
-          </li>
-          <li>
-            <Link href={"/reviews"}>Reviews</Link>
-          </li>
-          <li>
-            <Link href={"/contact"}>Contact</Link>
-          </li>
-        </ul>
-      </nav>
+      <Navigation></Navigation>
       {children}
     </>
   );

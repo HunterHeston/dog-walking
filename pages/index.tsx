@@ -1,11 +1,10 @@
+import Header from "@/components/tailwindui/header";
+
 export default function Home() {
   return (
     <>
       <header>
-        <h1>
-          Loving Care for Your Pets by Your Trusted Dog Walker & Pet Sitter
-        </h1>
-        <button>Book me!</button>
+        <Header></Header>
       </header>
       <main>
         <section>
