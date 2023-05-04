@@ -1,5 +1,6 @@
 import { CatIcon, DogIcon } from "lucide-react";
 import { useState } from "react";
+import { Calendar } from "@/components/ui/calendar";
 
 enum Duration {
   ThirtyMinutes = 30,
@@ -14,6 +15,8 @@ enum PetType {
 export default function DropInForm() {
   const [duration, setDuration] = useState<Duration>(Duration.ThirtyMinutes);
   const [petType, setPetType] = useState<PetType>(PetType.Cat);
+  const initialDays: Date[] = [];
+  const [days, setDays] = useState<Date[] | undefined>(initialDays);
 
   return (
     <form>
@@ -102,6 +105,20 @@ export default function DropInForm() {
                     Dog
                   </button>
                 </div>
+              </div>
+
+              {/* selected days */}
+              <div className="sm:col-span-4 flex">
+                <label htmlFor="dates">
+                  Date(s)
+                  <Calendar
+                    mode="multiple"
+                    min={1}
+                    selected={days}
+                    onSelect={setDays}
+                    className="rounded-md border mt-4"
+                  />
+                </label>
               </div>
 
               {/* name of the pet */}
