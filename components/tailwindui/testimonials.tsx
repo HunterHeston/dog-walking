@@ -1,9 +1,9 @@
+import { StarIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
 export type Testimonial = {
   date: string;
   body: string;
-  rating: number;
   author: Author;
 };
 
@@ -79,7 +79,13 @@ export default function Testimonials({
                 <div className="font-semibold">
                   {featuredTestimonial.author.name}
                 </div>
-                <div className="text-gray-600">{`@${featuredTestimonial.author.handle}`}</div>
+                <div className="text-gray-600 flex w-16">
+                  <StarIcon></StarIcon>
+                  <StarIcon></StarIcon>
+                  <StarIcon></StarIcon>
+                  <StarIcon></StarIcon>
+                  <StarIcon></StarIcon>
+                </div>
               </div>
             </figcaption>
           </figure>
@@ -120,7 +126,13 @@ export default function Testimonials({
                           <div className="font-semibold">
                             {testimonial.author.name}
                           </div>
-                          <div className="text-gray-600">{`@${testimonial.author.handle}`}</div>
+                          <div className="text-gray-600 flex w-16">
+                            <StarIcon></StarIcon>
+                            <StarIcon></StarIcon>
+                            <StarIcon></StarIcon>
+                            <StarIcon></StarIcon>
+                            <StarIcon></StarIcon>
+                          </div>
                         </div>
                       </figcaption>
                     </figure>
