@@ -9,9 +9,7 @@ export type Testimonial = {
 
 type Author = {
   name: string;
-  handle?: string;
   imageUrl: string;
-  logoUrl?: string;
 };
 
 function classNames(...classes: string[]) {
@@ -106,9 +104,9 @@ export default function Testimonials({
                     "space-y-8"
                   )}
                 >
-                  {column.map((testimonial: Testimonial) => (
+                  {column.map((testimonial: Testimonial, testimonialIdx) => (
                     <figure
-                      key={testimonial.author.handle}
+                      key={testimonialIdx}
                       className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5"
                     >
                       <blockquote className="text-gray-900">

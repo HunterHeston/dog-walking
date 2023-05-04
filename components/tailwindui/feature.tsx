@@ -67,14 +67,6 @@ export default function Feature() {
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-300">
                   <p className="flex-auto">{feature.description}</p>
-                  {/* <p className="mt-6">
-                    <a
-                      href={feature.href}
-                      className="text-sm font-semibold leading-6 text-indigo-400"
-                    >
-                      Learn more <span aria-hidden="true">→</span>
-                    </a>
-                  </p> */}
                 </dd>
               </div>
             ))}
@@ -83,25 +75,4 @@ export default function Feature() {
       </div>
     </div>
   );
-}
-
-{
-  /* <h2>Why chose me?</h2>
-          <ul>
-            <li>Over 100 five-star reviews on Rover.</li>
-            <li>
-              Personalized care from a trustworthy, kind, and approachable pet
-              sitter.
-            </li>
-            <li>
-              Comprehensive services, including dog walking, drop-in visits, and
-              overnight stays.
-            </li>
-            <li>Flexible availability to meet your needs.</li>
-          </ul>
-          <p>
-            Book a service with me today and experience the peace of mind that
-            comes with knowing your pets are in loving hands.
-          </p>
-          <button>Book Me!</button> */
 }
