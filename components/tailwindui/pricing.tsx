@@ -1,53 +1,20 @@
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
-const tiers = [
-  {
-    name: "Basic",
-    id: "tier-basic",
-    href: "#",
-    price: { monthly: "$15", annually: "$12" },
-    description: "Everything necessary to get started.",
-    features: [
-      "5 products",
-      "Up to 1,000 subscribers",
-      "Basic analytics",
-      "48-hour support response time",
-    ],
-  },
-  {
-    name: "Essential",
-    id: "tier-essential",
-    href: "#",
-    price: { monthly: "$30", annually: "$24" },
-    description:
-      "Everything in Basic, plus essential tools for growing your business.",
-    features: [
-      "25 products",
-      "Up to 10,000 subscribers",
-      "Advanced analytics",
-      "24-hour support response time",
-      "Marketing automations",
-    ],
-  },
-  {
-    name: "Growth",
-    id: "tier-growth",
-    href: "#",
-    price: { monthly: "$60", annually: "$48" },
-    description:
-      "Everything in Essential, plus collaboration tools and deeper insights.",
-    features: [
-      "Unlimited products",
-      "Unlimited subscribers",
-      "Advanced analytics",
-      "1-hour, dedicated support response time",
-      "Marketing automations",
-      "Custom reporting tools",
-    ],
-  },
-];
+type Service = {
+  name: string;
+  id: string;
+  href: string;
+  price: { base: string; extraPet: string; extraTime?: string };
+  description: string;
+  features: string[];
+};
 
-export default function Example() {
+export type PricingProps = {
+  services: Service[];
+};
+
+export default function Pricing({ services }: PricingProps) {
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -60,45 +27,55 @@ export default function Example() {
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600 sm:text-center">
-          Distinctio et nulla eum soluta et neque labore quibusdam. Saepe et
-          quasi iusto modi velit ut non voluptas in. Explicabo id ut laborum.
+          See my services bellow. If you have any questions or need something
+          slightly different, please{" "}
+          <Link href="/contact" className="hover:underline text-indigo-600">
+            send me a message
+          </Link>
+          !
         </p>
         <div className="mt-20 flow-root">
           <div className="isolate -mt-16 grid max-w-sm grid-cols-1 gap-y-16 divide-y divide-gray-100 sm:mx-auto lg:-mx-8 lg:mt-0 lg:max-w-none lg:grid-cols-3 lg:divide-x lg:divide-y-0 xl:-mx-4">
-            {tiers.map((tier) => (
-              <div key={tier.id} className="pt-16 lg:px-8 lg:pt-0 xl:px-14">
+            {services.map((service) => (
+              <div key={service.id} className="pt-16 lg:px-8 lg:pt-0 xl:px-14">
                 <h3
-                  id={tier.id}
+                  id={service.id}
                   className="text-base font-semibold leading-7 text-gray-900"
                 >
-                  {tier.name}
+                  {service.name}
                 </h3>
-                <p className="mt-6 flex items-baseline gap-x-1">
+                <p
+                  className={
+                    "flex items-baseline gap-x-1" + service.price.extraTime
+                      ? "mt-6"
+                      : "mt-9"
+                  }
+                >
                   <span className="text-5xl font-bold tracking-tight text-gray-900">
-                    {tier.price.monthly}
-                  </span>
-                  <span className="text-sm font-semibold leading-6 text-gray-600">
-                    /month
+                    {service.price.base}
                   </span>
                 </p>
                 <p className="mt-3 text-sm leading-6 text-gray-500">
-                  {tier.price.annually} per month if paid annually
+                  {["+", service.price.extraTime, "extra 30 minutes"].join(" ")}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-gray-500">
+                  +{service.price.extraPet} per extra pet
                 </p>
                 <a
-                  href={tier.href}
-                  aria-describedby={tier.id}
+                  href={service.href}
+                  aria-describedby={service.id}
                   className="mt-10 block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Buy plan
+                  Book this!
                 </a>
                 <p className="mt-10 text-sm font-semibold leading-6 text-gray-900">
-                  {tier.description}
+                  {service.description}
                 </p>
                 <ul
                   role="list"
                   className="mt-6 space-y-3 text-sm leading-6 text-gray-600"
                 >
-                  {tier.features.map((feature) => (
+                  {service.features.map((feature) => (
                     <li key={feature} className="flex gap-x-3">
                       <CheckCircleIcon
                         className="h-6 w-5 flex-none text-indigo-600"
