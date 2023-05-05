@@ -65,7 +65,7 @@ export default function DropInForm() {
                           : "text-gray-300"
                       }
                     >
-                      +$22 per vist
+                      +$22 per visit
                     </span>
                   </button>
                 </div>
@@ -221,7 +221,7 @@ export default function DropInForm() {
               Your Personal Information
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
-              You name and the location I&apos;ll be pet sitting at.
+              Your name and the location I&apos;ll be pet sitting at.
             </p>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -280,27 +280,6 @@ export default function DropInForm() {
                 </div>
               </div>
 
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Country
-                </label>
-                <div className="mt-2">
-                  <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                  >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
-                  </select>
-                </div>
-              </div>
-
               <div className="col-span-full">
                 <label
                   htmlFor="street-address"
@@ -331,6 +310,8 @@ export default function DropInForm() {
                     type="text"
                     name="city"
                     id="city"
+                    value="San Francisco"
+                    disabled
                     autoComplete="address-level2"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -349,6 +330,8 @@ export default function DropInForm() {
                     type="text"
                     name="region"
                     id="region"
+                    value="California"
+                    disabled
                     autoComplete="address-level1"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
