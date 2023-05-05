@@ -1,4 +1,3 @@
-import { CatIcon, DogIcon } from "lucide-react";
 import { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 
