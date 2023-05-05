@@ -56,8 +56,17 @@ export default function Testimonials({
           <h2 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">
             Testimonials
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            We have worked with thousands of amazing people
+          <p className="my-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            I&apos;ve worked with hundreds of pets!
+          </p>
+          <p className="text-gray-600">
+            See more on{" "}
+            <a
+              className="text-indigo-600 hover:underline"
+              href="https://www.rover.com/members/cheyenne-h-yea-i-wanna-see-a-pic-of-your-pet/?service_type=drop-in&start_date=07%2F05%2F2023&end_date=07%2F06%2F2023&frequency=onetime&pet_type=dog"
+            >
+              Rover
+            </a>
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
