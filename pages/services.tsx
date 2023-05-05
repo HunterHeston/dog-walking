@@ -4,8 +4,7 @@ const tiers = [
   {
     name: "30 Minute Dog Walking",
     id: "dog-walking",
-    // TODO: href with url params to seed form
-    href: "#",
+    href: "/book?service=dog-walk",
     price: { base: "$25", extraPet: "$10", extraTime: "$15" },
     description: "I'll walk your dog while you are at work or away.",
     features: [
@@ -17,8 +16,7 @@ const tiers = [
   {
     name: "30 Minute Drop-In Visit",
     id: "drop-in-visits",
-    // TODO: href with url params to seed form
-    href: "#",
+    href: "/book?service=drop-in",
     price: { base: "$25", extraPet: "$5", extraTime: "$22" },
     description:
       "I will visit your home and care for your pets while you are away.",
@@ -33,8 +31,7 @@ const tiers = [
   {
     name: "Overnight Stay",
     id: "overnight-stays",
-    // TODO: href with url params to seed form
-    href: "#",
+    href: "/book?service=overnight",
     price: { base: "$150", extraPet: "$25", extraTime: "" },
     description: "I will stay overnight in your home with your pets.",
     features: [

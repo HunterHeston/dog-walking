@@ -2,26 +2,41 @@ import DropInForm from "@/components/dropInForm";
 import OvernightForm from "@/components/overnightForm";
 import Select, { Option } from "@/components/tailwindui/select";
 import WalkForm from "@/components/walkForm";
+import { useRouter } from "next/router";
 
 import { useState } from "react";
 
 const walk: Option = {
   id: 1,
   name: "Dog Walk",
+  param: "dog-walk",
 };
 
 const dropIn: Option = {
   id: 2,
   name: "Drop In",
+  param: "drop-in",
 };
 
 const overnight: Option = {
   id: 3,
   name: "Overnight",
+  param: "overnight",
+};
+
+const serviceMap: { [key: string]: Option } = {
+  "dog-walk": walk,
+  "drop-in": dropIn,
+  overnight: overnight,
 };
 
 export default function Contact() {
-  const [selected, setSelected] = useState<Option>(walk);
+  const router = useRouter();
+  const { service } = router.query;
+  console.log(service);
+  const [selected, setSelected] = useState<Option>(
+    serviceMap[service as string] || walk
+  );
 
   return (
     <>

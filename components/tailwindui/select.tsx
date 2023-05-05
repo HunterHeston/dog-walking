@@ -9,6 +9,7 @@ function classNames(...classes: string[]) {
 export type Option = {
   id: number;
   name: string;
+  param: string;
 };
 
 type SelectProps = {

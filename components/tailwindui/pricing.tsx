@@ -61,13 +61,13 @@ export default function Pricing({ services }: PricingProps) {
                 <p className="mt-3 text-sm leading-6 text-gray-500">
                   +{service.price.extraPet} per extra pet
                 </p>
-                <a
+                <Link
                   href={service.href}
                   aria-describedby={service.id}
                   className="mt-10 block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Book this!
-                </a>
+                </Link>
                 <p className="mt-10 text-sm font-semibold leading-6 text-gray-900">
                   {service.description}
                 </p>
