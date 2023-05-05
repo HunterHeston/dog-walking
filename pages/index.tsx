@@ -10,9 +10,6 @@ export default function Home() {
       </header>
       <main>
         <section>
-          <h2>Welcome to my cozy corner of pet care!</h2>
-        </section>
-        <section>
           <Feature></Feature>
         </section>
         <section>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Logo from "../icons/logo";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -22,15 +23,12 @@ export default function Navigation() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <Image
-              className="h-8 w-auto"
-              width={100}
-              height={100}
-              src="/logo-black.png"
-              alt=""
-            />
+          <Link
+            href="/"
+            className="-m-1.5 p-1.5 font-bold text-indigo-600 underline"
+          >
+            <span className="sr-only">Hawken Walks</span>
+            Hawken Pet Care
           </Link>
         </div>
         <div className="flex lg:hidden">

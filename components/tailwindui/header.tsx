@@ -55,6 +55,8 @@ export default function Example() {
                     Loving care for your pets
                   </h1>
                   <p className="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+                    Hey, my name is{" "}
+                    <span className="text-indigo-600 font-bold">Cheyenne</span>.
                     I&apos;m here to make sure your furry friends are treated
                     like family! As an experienced and caring dog walker and pet
                     sitter, I am here to give your pets the love, attention, and
