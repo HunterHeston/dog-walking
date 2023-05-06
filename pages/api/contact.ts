@@ -4,6 +4,7 @@ import twilio from "twilio";
 
 const accountSid = process.env.TWILLIO_ACCOUNT_SID;
 const authToken = process.env.TWILLIO_AUTH_TOKEN;
+const targetNumber = process.env.TWILLIO_TARGET_PHONE_NUMBER;
 const twilioNumber = process.env.TWILLIO_PHONE_NUMBER;
 
 const client = twilio(accountSid, authToken);
@@ -17,6 +18,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  if (
+    accountSid === undefined ||
+    authToken === undefined ||
+    targetNumber === undefined ||
+    twilioNumber === undefined
+  ) {
+    res.status(500).json({ error: "missing twilio env vars", success: false });
+    return;
+  }
   const { firstName, lastName, phoneNumber, message } = JSON.parse(req.body);
   console.log(firstName, lastName, phoneNumber, message);
   console.log(req.body);
@@ -33,7 +43,7 @@ ${message}`;
     const message = await client.messages.create({
       body: messageBody,
       from: twilioNumber,
-      to: "+19048788606",
+      to: targetNumber,
     });
     console.log(message);
   } catch (err: any) {
