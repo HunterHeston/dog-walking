@@ -7,12 +7,55 @@ enum Duration {
 }
 
 export default function WalkForm() {
-  const [duration, setDuration] = useState<Duration>(Duration.ThirtyMinutes);
+  // pet and stay information
   const initialDays: Date[] = [];
+  const [duration, setDuration] = useState<Duration>(Duration.ThirtyMinutes);
   const [days, setDays] = useState<Date[] | undefined>(initialDays);
+  const [petName, setPetName] = useState<string>("");
+  const [petBreeds, setPetBreeds] = useState<string>("");
+  const [petAge, setPetAge] = useState<number>(0);
+  const [petWeight, setPetWeight] = useState<number>(0);
+
+  // owner information
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [streetAddress, setStreetAddress] = useState<string>("");
+  const [postalCode, setPostalCode] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+
+  // submit handler that sends the form data to the backend at api/book
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const res = await fetch("/api/book", {
+      body: JSON.stringify({
+        serviceType: "dog-walk",
+        duration,
+        days,
+        petName,
+        petBreeds,
+        petAge,
+        petWeight,
+        firstName,
+        lastName,
+        phoneNumber,
+        streetAddress,
+        city: "San Francisco",
+        state: "CA",
+        postalCode,
+        message,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+    const result = await res.json();
+    console.log(result);
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="space-y-12">
         <div className="pb-12">
           {/* The pets personal information */}
@@ -91,6 +134,8 @@ export default function WalkForm() {
                     type="text"
                     name="pet-name"
                     id="pet-name"
+                    value={petName}
+                    onChange={(e) => setPetName(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -109,6 +154,8 @@ export default function WalkForm() {
                     type="number"
                     name="pet-weight"
                     id="pet-weight"
+                    value={petWeight}
+                    onChange={(e) => setPetWeight(Number(e.target.value))}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -127,6 +174,8 @@ export default function WalkForm() {
                     id="pet-breeds"
                     name="pet-breeds"
                     type="text"
+                    value={petBreeds}
+                    onChange={(e) => setPetBreeds(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -145,6 +194,8 @@ export default function WalkForm() {
                     id="pet-age"
                     name="pet-age"
                     type="number"
+                    value={petAge}
+                    onChange={(e) => setPetAge(Number(e.target.value))}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -196,6 +247,8 @@ export default function WalkForm() {
                     name="first-name"
                     id="first-name"
                     autoComplete="given-name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -214,6 +267,8 @@ export default function WalkForm() {
                     name="last-name"
                     id="last-name"
                     autoComplete="family-name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -233,6 +288,8 @@ export default function WalkForm() {
                     name="phone"
                     type="tel"
                     autoComplete="phone"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -251,6 +308,8 @@ export default function WalkForm() {
                     name="street-address"
                     id="street-address"
                     autoComplete="street-address"
+                    value={streetAddress}
+                    onChange={(e) => setStreetAddress(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -309,6 +368,8 @@ export default function WalkForm() {
                     name="postal-code"
                     id="postal-code"
                     autoComplete="postal-code"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -328,8 +389,9 @@ export default function WalkForm() {
                   id="message"
                   name="message"
                   rows={3}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue=""
                 />
               </div>
               <p className="mt-3 text-sm leading-6 text-gray-600">

@@ -11,7 +11,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { firstName, lastName, phoneNumber, message } = JSON.parse(req.body);
+  if (req.method !== "POST") {
+    res.status(405).json({ error: "method not allowed", success: false });
+    return;
+  }
+
+  const { firstName, lastName, phoneNumber, message } = req.body;
   const result = await sendTextMessage(
     firstName,
     lastName,
