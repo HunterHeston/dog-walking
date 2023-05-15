@@ -8,12 +8,61 @@ enum PetType {
 }
 
 export default function DropInForm() {
-  const [petType, setPetType] = useState<PetType>(PetType.Cat);
+  // booking information
   const initialDays: Date[] = [];
   const [days, setDays] = useState<Date[] | undefined>(initialDays);
 
+  // pet information
+  const [petType, setPetType] = useState<PetType>(PetType.Cat);
+  const [petName, setPetName] = useState<string>("");
+  const [petAge, setPetAge] = useState<number>(0);
+  const [petBreeds, setPetBreeds] = useState<string>("");
+  const [petWeight, setPetWeight] = useState<number>(0);
+  const [petSex, setPetSex] = useState<string>("");
+
+  // owner information
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [streetAddress, setStreetAddress] = useState<string>("");
+  const [postalCode, setPostalCode] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+
+  // function that sends the form data to the backend at api/book
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = {
+      serviceType: "overnight",
+      days,
+      petType,
+      petName,
+      petAge,
+      petBreeds,
+      petWeight,
+      petSex,
+      firstName,
+      lastName,
+      phoneNumber,
+      streetAddress,
+      city: "San Francisco",
+      state: "CA",
+      postalCode,
+      message,
+    };
+
+    const result = await fetch("/api/book", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    console.log(result);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="space-y-12">
         <div className="pb-12">
           {/* The pets personal information */}
@@ -85,6 +134,8 @@ export default function DropInForm() {
                     type="text"
                     name="pet-name"
                     id="pet-name"
+                    value={petName}
+                    onChange={(e) => setPetName(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -103,6 +154,8 @@ export default function DropInForm() {
                     type="number"
                     name="pet-weight"
                     id="pet-weight"
+                    value={petWeight}
+                    onChange={(e) => setPetWeight(Number(e.target.value))}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -121,6 +174,8 @@ export default function DropInForm() {
                     id="pet-breeds"
                     name="pet-breeds"
                     type="text"
+                    value={petBreeds}
+                    onChange={(e) => setPetBreeds(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -139,6 +194,8 @@ export default function DropInForm() {
                     id="pet-age"
                     name="pet-age"
                     type="number"
+                    value={petAge}
+                    onChange={(e) => setPetAge(Number(e.target.value))}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -155,6 +212,8 @@ export default function DropInForm() {
                   <select
                     id="pet-sex"
                     name="pet-sex"
+                    value={petSex}
+                    onChange={(e) => setPetSex(e.target.value)}
                     placeholder="Select an option"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                   >
@@ -188,6 +247,8 @@ export default function DropInForm() {
                     type="text"
                     name="first-name"
                     id="first-name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     autoComplete="given-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -206,6 +267,8 @@ export default function DropInForm() {
                     type="text"
                     name="last-name"
                     id="last-name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     autoComplete="family-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -225,6 +288,8 @@ export default function DropInForm() {
                     id="phone"
                     name="phone"
                     type="tel"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     autoComplete="phone"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -243,6 +308,8 @@ export default function DropInForm() {
                     type="text"
                     name="street-address"
                     id="street-address"
+                    value={streetAddress}
+                    onChange={(e) => setStreetAddress(e.target.value)}
                     autoComplete="street-address"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -302,6 +369,8 @@ export default function DropInForm() {
                     name="postal-code"
                     id="postal-code"
                     autoComplete="postal-code"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -321,8 +390,9 @@ export default function DropInForm() {
                   id="message"
                   name="message"
                   rows={3}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue=""
                 />
               </div>
               <p className="mt-3 text-sm leading-6 text-gray-600">
