@@ -51,10 +51,12 @@ export type BookingRequestInput = {
   serviceType: string;
   duration: string;
   days: string;
+  petType: string;
   petName: string;
   petBreeds: string;
   petAge: string;
   petWeight: string;
+  petSex: string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -87,11 +89,15 @@ ${bookingRequest.streetAddress}
 ${bookingRequest.city}, ${bookingRequest.state} ${bookingRequest.postalCode}
 
 -----Pet Information-----
-${bookingRequest.petName} - ${bookingRequest.petAge} years old
-${bookingRequest.petBreeds} - ${bookingRequest.petWeight} lbs
+${bookingRequest.petName}
+${bookingRequest.petAge} years old
+${bookingRequest.petBreeds}
+${bookingRequest.petWeight} lbs
 
 -----Booking Information-----
-${bookingRequest.serviceType} - ${bookingRequest.duration} - ${bookingRequest.days} days
+${bookingRequest.serviceType}
+${bookingRequest.duration}
+${bookingRequest.days} days
 
 -----Client Message-----
 ${bookingRequest.message}`;

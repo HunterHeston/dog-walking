@@ -21,10 +21,12 @@ export default async function handler(
     serviceType,
     duration,
     days,
+    petType,
     petName,
     petBreeds,
     petAge,
     petWeight,
+    petSex,
     firstName,
     lastName,
     phoneNumber,
@@ -40,6 +42,8 @@ export default async function handler(
   console.log("duration: ", duration);
   console.log("days: ", days);
   console.log("petName: ", petName);
+  console.log("petType: ", petType);
+  console.log("petSex: ", petSex);
 
   console.log("petBreeds: ", petBreeds);
   console.log("petAge: ", petAge);
@@ -59,10 +63,12 @@ export default async function handler(
     serviceType,
     duration,
     days,
+    petType,
     petName,
     petBreeds,
     petAge,
     petWeight,
+    petSex,
     firstName,
     lastName,
     phoneNumber,

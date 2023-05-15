@@ -15,6 +15,7 @@ export default function WalkForm() {
   const [petBreeds, setPetBreeds] = useState<string>("");
   const [petAge, setPetAge] = useState<number>(0);
   const [petWeight, setPetWeight] = useState<number>(0);
+  const [petSex, setPetSex] = useState<string>("");
 
   // owner information
   const [firstName, setFirstName] = useState<string>("");
@@ -36,6 +37,7 @@ export default function WalkForm() {
         petBreeds,
         petAge,
         petWeight,
+        petSex,
         firstName,
         lastName,
         phoneNumber,
@@ -212,6 +214,8 @@ export default function WalkForm() {
                   <select
                     id="pet-sex"
                     name="pet-sex"
+                    value={petSex}
+                    onChange={(e) => setPetSex(e.target.value)}
                     placeholder="Select an option"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                   >
