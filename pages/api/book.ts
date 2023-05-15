@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { sendBookingRequest, BookingRequestInput } from "@/lib/twillio";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
@@ -53,6 +54,29 @@ export default async function handler(
   console.log("message: ", message);
 
   console.log(req.body);
+
+  const error = await sendBookingRequest({
+    serviceType,
+    duration,
+    days,
+    petName,
+    petBreeds,
+    petAge,
+    petWeight,
+    firstName,
+    lastName,
+    phoneNumber,
+    streetAddress,
+    city,
+    state,
+    postalCode,
+    message,
+  });
+
+  if (error instanceof Error) {
+    res.status(500).json({ error: error.message, success: false });
+    return;
+  }
 
   res.status(200).json({ success: true });
 }
